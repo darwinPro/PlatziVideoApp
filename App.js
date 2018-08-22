@@ -36,7 +36,7 @@ export default class App extends Component<Props> {
     return (
       <Home>
         <Header>
-          <Text>Hola que hase</Text>
+          <Text>Hola</Text>
         </Header>
 
         <Player/>

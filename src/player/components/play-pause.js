@@ -5,7 +5,8 @@ import {
     TouchableHighlight,
     TouchableOpacity,
     TouchableWithoutFeedback,
-    Text
+    Text,
+    Image
 } from 'react-native'
 
 function PlayPause(props) {
@@ -15,17 +16,27 @@ function PlayPause(props) {
             style={styles.container}
             underlayColor='red'
             hitSlop={{
-                left:5,
-                top:5,
-                bottom:5,
-                right:5
+                left: 5,
+                top: 5,
+                bottom: 5,
+                right: 5
             }}
         >
             {
                 props.paused ?
-                    <Text style={styles.button}>PLAY</Text>
+                    <Image
+                        style={{
+                            width: 24,
+                            height: 24
+                        }}
+                        source={require('../../icons/play.png')} />
                     :
-                    <Text style={styles.button}>PAUSE</Text>
+                    <Image
+                        style={{
+                            width: 24,
+                            height: 24
+                        }}
+                        source={require('../../icons/pause.png')} />
             }
 
 
@@ -34,21 +45,11 @@ function PlayPause(props) {
 }
 
 const styles = StyleSheet.create({
-    button: {
-        color: 'white',
-        fontSize: 10,
-        fontWeight: 'bold'
-    },
     container: {
         justifyContent: 'center',
-        paddingHorizontal: 10,
+        paddingHorizontal: 5,
         height: 25,
-        marginRight: 10,
         marginVertical: 5,
-        borderWidth: 1,
-        borderRadius: 10,
-        borderColor: 'white',
-        backgroundColor: 'gray'
     }
 })
 
