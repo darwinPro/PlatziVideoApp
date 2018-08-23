@@ -7,6 +7,13 @@ import Empty from '../components/emtpy';
 import CategoryListLayout from '../components/categories-list-layout';
 import HorizontalSeparator from '../../sections/components/horizontal-separator';
 import Category from '../components/category';
+import { connect } from 'react-redux'
+
+function mapStateToProps(state){
+    return {
+        list: state.categoriesList
+    }
+}
 
 class CategoryList extends Component {
     keyEstractro = item => item.id.toString()
@@ -35,4 +42,4 @@ class CategoryList extends Component {
     }
 }
 
-export default CategoryList;
+export default connect(mapStateToProps) (CategoryList);

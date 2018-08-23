@@ -7,12 +7,21 @@ import SugestionsListLayout from '../components/sugestions-list-layout';
 import Empty from '../components/emtpy';
 import VerticalSeparator from '../components/vertical-separator';
 import Sugerencia from '../components/sugesstion';
+import { connect } from 'react-redux'
 
 class Suggestions extends Component {
     renderEmtpy = () => <Empty text="No hay sugerencias"></Empty>
     itemSeparator =() => <VerticalSeparator/>
+    viewMovie=item=>{
+        this.props.dispatch({
+            type:'SET_SELECTED_MOVIE',
+            payload: {
+                movie: item
+            }
+        })
+    }
     renderItems = ({item}) => (
-        <Sugerencia  {...item}/>
+        <Sugerencia  {...item} onPress={()=>{this.viewMovie(item)}}/>
     )
     keyEstractro = item => item.id.toString()
     
@@ -34,4 +43,10 @@ class Suggestions extends Component {
     }
 }
 
-export default Suggestions;
+function mapStateToProps(state){
+    return {
+        list: state.suggestionList
+    }
+}
+
+export default connect(mapStateToProps) (Suggestions);
